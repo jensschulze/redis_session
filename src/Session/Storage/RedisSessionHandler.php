@@ -66,13 +66,6 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
         // The exception handler is not active at this point, so we need to do it
         // manually.
         try {
-            $request = $this->requestStack->getCurrentRequest();
-//            $fields = [
-//                'uid' => $request->getSession()->get('uid', 0),
-//                'hostname' => $request->getClientIP(),
-//                'session' => $value,
-//                'timestamp' => REQUEST_TIME,
-//            ];
             $key = $this->getKey($sid);
 
             $this->redis->setex($key, $this->ttl, $value);
