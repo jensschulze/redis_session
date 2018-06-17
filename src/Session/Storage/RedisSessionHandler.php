@@ -68,9 +68,7 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
         try {
             $key = $this->getKey($sid);
 
-            $this->redis->setex($key, $this->ttl, $value);
-
-            return true;
+            return $this->redis->setex($key, $this->ttl, $value);
         } catch (\Exception $exception) {
             require_once DRUPAL_ROOT.'/core/includes/errors.inc';
             // If we are displaying errors, then do so with no possibility of a
