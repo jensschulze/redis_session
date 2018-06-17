@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains redis_session.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function redis_session_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the redis_session module.
+    case 'help.page.redis_session':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A Redis based session storage') . '</p>';
+      return $output;
+
+    default:
+  }
+}

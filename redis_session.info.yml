@@ -1,0 +1,7 @@
+name: 'Redis Session'
+type: module
+description: 'A Redis based session storage'
+core: 8.x
+package: 'Performance'
+dependencies:
+  - redis

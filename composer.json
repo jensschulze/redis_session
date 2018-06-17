@@ -1,0 +1,24 @@
+{
+  "name": "jensschulze/redis_session",
+  "type": "drupal-module",
+  "description": "A Redis based session storage",
+  "authors": [
+    {
+      "name": "Jens Schulze",
+      "homepage": "https://github.com/jensschulze",
+      "role": "Developer"
+    }
+  ],
+  "keywords": ["Drupal", "Redis", "Session"],
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/redis_session",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/redis_session",
+    "source": "http://cgit.drupalcode.org/redis_session"
+  },
+  "require": {
+    "drupal/redis": "^1.0",
+    "php": "^7.1"
+  }
+}
