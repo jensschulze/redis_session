@@ -50,14 +50,17 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
      */
     public function read($sid): string
     {
-        $data = '';
-        if (!empty($sid)) {
-            // Read the session data from the database.
-            $key = $this->getKey($sid);
-            $data = $this->redis->get($key);
+        if (empty($sid)) {
+            return '';
         }
 
-        return $data;
+        // Read the session data from the database.
+        $key = $this->getKey($sid);
+        if (!$this->redis->exists($key)) {
+            return '';
+        }
+
+        return $this->redis->get($key);
     }
 
     /**
