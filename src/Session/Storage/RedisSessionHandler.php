@@ -6,7 +6,6 @@ use Drupal\Component\Utility\Crypt;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Utility\Error;
 use Drupal\redis\ClientFactory;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 
 /**
@@ -18,11 +17,6 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
     use DependencySerializationTrait;
 
     /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    protected $requestStack;
-
-    /**
      * @var \Redis
      */
     protected $redis;
@@ -31,9 +25,10 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
 
     private $ttl = 2000000;
 
-    public function __construct(RequestStack $request_stack, ClientFactory $clientFactory)
-    {
-        $this->requestStack = $request_stack;
+
+    public function __construct(
+        ClientFactory $clientFactory
+    ) {
         $this->redis = $clientFactory::getClient();
     }
 

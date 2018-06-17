@@ -27,8 +27,7 @@ class RedisSessionServiceProvider extends ServiceProviderBase
         // Use the ExtranetSessionManager as session manager
         $definition = $container->getDefinition('session_handler.storage');
         $definition->setClass(RedisSessionHandler::class);
-        $requestStack = new Reference('request_stack');
         $redisFactory = new Reference('redis.factory');
-        $definition->setArguments([$requestStack, $redisFactory]);
+        $definition->setArguments([$redisFactory]);
     }
 }
