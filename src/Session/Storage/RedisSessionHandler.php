@@ -19,12 +19,11 @@ class RedisSessionHandler extends AbstractProxy implements \SessionHandlerInterf
     /**
      * @var \Redis
      */
-    protected $redis;
+    private $redis;
 
     private $prefix = 'session';
 
     private $ttl = 2000000;
-
 
     public function __construct(
         ClientFactory $clientFactory
